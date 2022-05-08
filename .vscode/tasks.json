@@ -1,0 +1,50 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build debug lib",
+            "type": "shell",
+            "command": "rustc -g --out-dir ./out --edition 2021 -C instrument-coverage ./src/lib.rs",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        },
+        {
+            "label": "build debug bin",
+            "type": "shell",
+            "command": "rustc -g --out-dir ./out --edition 2021 -C instrument-coverage -L ./out --extern prust ./src/main.rs",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": "build debug lib"
+        },
+        {
+            "label": "coverage step 1",
+            "type": "shell",
+            "command": "./out/prust.exe",
+            "dependsOn": "build debug bin"
+        },
+        {
+            "label": "coverage step 2",
+            "type": "shell",
+            "command": "$(rustc --print sysroot)/lib/rustlib/x86_64-pc-windows-msvc/bin/llvm-profdata merge -sparse default.profraw -o default.profdata",
+            "dependsOn": "coverage step 1"
+        },
+        {
+            "label": "coverage step 3",
+            "type": "shell",
+            "command": "$(rustc --print sysroot)/lib/rustlib/x86_64-pc-windows-msvc/bin/llvm-cov show -Xdemangler=rustfilt out/prust.exe -instr-profile=default.profdata -show-line-counts-or-regions -show-instantiations",
+            "dependsOn": "coverage step 2"
+        },
+        {
+            "label": "coverage",
+            "dependsOn": "coverage step 3"
+        },
+    ]
+}
