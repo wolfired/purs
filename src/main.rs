@@ -1,7 +1,7 @@
-#![crate_name = "prust"]
+#![crate_name = "purs"]
 #![crate_type = "bin"]
 
-use prust::com::wolfired;
+use purs::com::wolfired;
 
 fn main() {
     println!("hello max: {}", wolfired::max(3, 2));

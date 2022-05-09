@@ -3,19 +3,20 @@
     // Hover to view descriptions of existing attributes.
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
-    "configurations": [
-        {
-            "type": "lldb",
-            "request": "launch",
-            "name": "Launch",
-            "program": "${workspaceFolder}/out/prust.exe",
-            "args": [],
-            "cwd": "${workspaceFolder}",
-            "sourceLanguages": ["rust"],
-            "sourceMap": {
-                "/rustc/ea92b08383b718e79317b29470cb244c48557cd5": "C:/Users/link/.rustup/toolchains/nightly-x86_64-pc-windows-msvc/lib/rustlib/src/rust"
-            },
-            "preLaunchTask": "build debug bin"
-        }
-    ]
+    "configurations": [{
+        "type": "lldb",
+        "request": "launch",
+        "name": "Launch",
+        "program": "${workspaceFolder}/out/purs",
+        "args": [],
+        "env": {
+            "LLVM_PROFILE_FILE": "${workspaceFolder}/out/purs.profraw"
+        },
+        "cwd": "${workspaceFolder}",
+        "sourceLanguages": ["rust"],
+        "sourceMap": {
+            "/rustc/30f386087564243ab88a93c984c265290a31580b": "D:/.rustup/toolchains/nightly-x86_64-pc-windows-msvc/lib/rustlib/src/rust"
+        },
+        "preLaunchTask": "build debug bin"
+    }]
 }

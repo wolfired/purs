@@ -1,4 +1,4 @@
-#![crate_name = "prust"]
+#![crate_name = "purs"]
 #![crate_type = "lib"]
 #![feature(stmt_expr_attributes)]
 
