@@ -39,13 +39,13 @@
         {
             "label": "coverage step 1",
             "type": "shell",
-            "command": "/Users/hd/.rustup/toolchains/nightly-x86_64-apple-darwin/lib/rustlib/x86_64-apple-darwin/bin/llvm-profdata merge -sparse ./out/purs.profraw -o ./out/purs.profdata",
+            "command": "D:/.rustup/toolchains/nightly-x86_64-pc-windows-msvc/lib/rustlib/x86_64-pc-windows-msvc/bin/llvm-profdata merge -sparse ./out/purs.profraw -o ./out/purs.profdata",
             "dependsOn": "run debug bin"
         },
         {
             "label": "coverage step 2",
             "type": "shell",
-            "command": "/Users/hd/.rustup/toolchains/nightly-x86_64-apple-darwin/lib/rustlib/x86_64-apple-darwin/bin/llvm-cov show -Xdemangler=rustfilt ./out/purs -instr-profile=./out/purs.profdata -show-line-counts-or-regions -show-instantiations",
+            "command": "D:/.rustup/toolchains/nightly-x86_64-pc-windows-msvc/lib/rustlib/x86_64-pc-windows-msvc/bin/llvm-cov show -format=text -output-dir=./out/cov -Xdemangler=rustfilt ./out/purs -instr-profile=./out/purs.profdata -show-line-counts-or-regions -show-instantiations",
             "dependsOn": "coverage step 1"
         },
         {
