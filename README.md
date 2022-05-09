@@ -1,13 +1,13 @@
 # purs
 
-a pure rustc project template
+a pure rustc project template for vscode
 
 # vscode extensions
 
 * CodeLLDB
 * rust-analyzer
 
-# steps
+# first use
 
 ```bash
 
