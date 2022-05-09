@@ -1,6 +1,6 @@
 {
     "rust-analyzer.linkedProjects": [{
-        "sysroot_src": "D:/.rustup/toolchains/nightly-x86_64-pc-windows-msvc/lib/rustlib/src/rust/library",
+        "sysroot_src": "/Users/hd/.rustup/toolchains/nightly-x86_64-apple-darwin/lib/rustlib/src/rust/library",
         "crates": [{
                 "root_module": "src/lib.rs",
                 "edition": "2021",

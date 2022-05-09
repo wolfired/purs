@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 commit_hash=`rustc -vV | grep -oP '[0-9a-z]{40}'`
 sysroot=`rustc --print sysroot`
 

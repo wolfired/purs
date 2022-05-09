@@ -12,6 +12,11 @@ cargo install rustfilt
 
 ```
 
+# vscode extensions
+
+* CodeLLDB
+* rust-analyzer
+
 # tips
 
 ```bash

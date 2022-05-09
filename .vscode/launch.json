@@ -15,7 +15,7 @@
         "cwd": "${workspaceFolder}",
         "sourceLanguages": ["rust"],
         "sourceMap": {
-            "/rustc/30f386087564243ab88a93c984c265290a31580b": "D:/.rustup/toolchains/nightly-x86_64-pc-windows-msvc/lib/rustlib/src/rust"
+            "/rustc/cb121987158d69bb894ba1bcc21dc45d1e0a488f": "/Users/hd/.rustup/toolchains/nightly-x86_64-apple-darwin/lib/rustlib/src/rust"
         },
         "preLaunchTask": "build debug bin"
     }]
