@@ -11,8 +11,10 @@ a pure rustc project template
 
 ```bash
 
-rustup component add llvm-tools-preview rust-src
-cargo install rustfilt
+rustup toolchain install nightly && \
+rustup default nightly && \
+rustup component add llvm-tools-preview rust-src && \
+cargo install rustfilt && \
 ./.vscode/prepare.sh
 
 ```
