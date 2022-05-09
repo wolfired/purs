@@ -6,7 +6,7 @@ a pure rustc project template
 
 ```bash
 
-rustup component add llvm-tools-preview
+rustup component add llvm-tools-preview rust-src
 
 cargo install rustfilt
 
