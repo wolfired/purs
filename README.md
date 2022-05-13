@@ -39,7 +39,7 @@ export LD_LIBRARY_PATH=./out
 
 # build a
 gcc -c -o ./out/libpurc.o ./purc/lib.c
-ar rcs libpurc.a ./out/libpurc.o
+ar rcs ./out/libpurc.a ./out/libpurc.o
 
 #build bin
 gcc -o ./out/purc -L./out ./purc/main.c -lpurc
