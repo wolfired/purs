@@ -24,10 +24,13 @@ cargo install rustfilt && \
 ```batch
 
 # build dll
-cl /Fo:.\out\purc.obj /LD /DBUILD_DLL .\purc\lib.c /link /OUT:.\out\purc.dll /IMPLIB:.\out\purc.lib
+cl /Fo:.\out\libpurc.obj /LD /DBUILD_DLL .\purc\lib.c /link /OUT:.\out\libpurc.dll /IMPLIB:.\out\libpurc.lib
 
 # build lib
-cl /Fo:.\out\purc.obj /DBUILD_DLL /c .\purc\lib.c
-lib /OUT:.\out\purc.lib .\out\purc.obj
+cl /Fo:.\out\libpurc.obj /DBUILD_DLL /c .\purc\lib.c
+lib /OUT:.\out\libpurc.lib .\out\libpurc.obj
+
+# build exe
+cl /Fo:.\out\purc.obj /DBUILD_DLL .\purc\main.c .\out\libpurc.lib /link /OUT:.\out\purc
 
 ```

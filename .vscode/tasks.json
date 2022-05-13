@@ -6,7 +6,7 @@
     {
       "label": "build debug lib",
       "type": "shell",
-      "command": "rustc -g --out-dir ./out --edition 2021 -C instrument-coverage -L ./out -l purc ./src/lib.rs",
+      "command": "rustc -g --out-dir ./out --edition 2021 -C instrument-coverage -L ./out -l libpurc ./src/lib.rs",
       "problemMatcher": [],
       "group": {
         "kind": "build",
