@@ -30,7 +30,18 @@ cl /Fo:.\out\libpurc.obj /LD /DBUILD_DLL .\purc\lib.c /link /OUT:.\out\libpurc.d
 cl /Fo:.\out\libpurc.obj /DBUILD_DLL /c .\purc\lib.c
 lib /OUT:.\out\libpurc.lib .\out\libpurc.obj
 
-# build exe
+# build bin
 cl /Fo:.\out\purc.obj /DBUILD_DLL .\purc\main.c .\out\libpurc.lib /link /OUT:.\out\purc
+
+# build so
+gcc -fPIC -shared -o ./out/libpurc.so ./purc/lib.c
+export LD_LIBRARY_PATH=./out
+
+# build a
+gcc -c -o ./out/libpurc.o ./purc/lib.c
+ar rcs libpurc.a ./out/libpurc.o
+
+#build bin
+gcc -o ./out/purc -L./out ./purc/main.c -lpurc
 
 ```
