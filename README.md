@@ -20,3 +20,14 @@ cargo install rustfilt && \
 ./.vscode/prepare.sh
 
 ```
+
+```batch
+
+# build dll
+cl /Fo:.\out\purc.obj /LD /DBUILD_DLL .\purc\lib.c /link /OUT:.\out\purc.dll /IMPLIB:.\out\purc.lib
+
+# build lib
+cl /Fo:.\out\purc.obj /DBUILD_DLL /c .\purc\lib.c
+lib /OUT:.\out\purc.lib .\out\purc.obj
+
+```

@@ -1,0 +1,22 @@
+{
+  "sysroot_src": "D:/.rustup/toolchains/nightly-x86_64-pc-windows-msvc/lib/rustlib/src/rust/library",
+  "crates": [
+    {
+      "root_module": "../src/lib.rs",
+      "edition": "2021",
+      "deps": [],
+      "cfg": []
+    },
+    {
+      "root_module": "../src/main.rs",
+      "edition": "2021",
+      "deps": [
+        {
+          "crate": 0,
+          "name": "purs"
+        }
+      ],
+      "cfg": []
+    }
+  ]
+}

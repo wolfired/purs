@@ -1,56 +1,56 @@
 {
-    // See https://go.microsoft.com/fwlink/?LinkId=733558
-    // for the documentation about the tasks.json format
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "build debug lib",
-            "type": "shell",
-            "command": "rustc -g --out-dir ./out --edition 2021 -C instrument-coverage ./src/lib.rs",
-            "problemMatcher": [],
-            "group": {
-                "kind": "build",
-                "isDefault": false
-            }
-        },
-        {
-            "label": "build debug bin",
-            "type": "shell",
-            "command": "rustc -g -o ./out/purs --edition 2021 -C instrument-coverage -L ./out --extern purs ./src/main.rs",
-            "problemMatcher": [],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "dependsOn": "build debug lib"
-        },
-        {
-            "label": "run debug bin",
-            "type": "shell",
-            "command": "./out/purs",
-            "options": {
-                "env": {
-                    "LLVM_PROFILE_FILE": "./out/purs.profraw"
-                }
-            },
-            "dependsOn": "build debug bin",
-            "problemMatcher": []
-        },
-        {
-            "label": "coverage step 1",
-            "type": "shell",
-            "command": "D:/.rustup/toolchains/nightly-x86_64-pc-windows-msvc/lib/rustlib/x86_64-pc-windows-msvc/bin/llvm-profdata merge -sparse ./out/purs.profraw -o ./out/purs.profdata",
-            "dependsOn": "run debug bin"
-        },
-        {
-            "label": "coverage step 2",
-            "type": "shell",
-            "command": "D:/.rustup/toolchains/nightly-x86_64-pc-windows-msvc/lib/rustlib/x86_64-pc-windows-msvc/bin/llvm-cov show -format=text -output-dir=./out/cov -Xdemangler=rustfilt ./out/purs -instr-profile=./out/purs.profdata -show-line-counts-or-regions -show-instantiations",
-            "dependsOn": "coverage step 1"
-        },
-        {
-            "label": "coverage",
-            "dependsOn": "coverage step 2"
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build debug lib",
+      "type": "shell",
+      "command": "rustc -g --out-dir ./out --edition 2021 -C instrument-coverage -L ./out -l purc ./src/lib.rs",
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      }
+    },
+    {
+      "label": "build debug bin",
+      "type": "shell",
+      "command": "rustc -g -o ./out/purs --edition 2021 -C instrument-coverage -L ./out --extern purs ./src/main.rs",
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "dependsOn": "build debug lib"
+    },
+    {
+      "label": "run debug bin",
+      "type": "shell",
+      "command": "./out/purs",
+      "options": {
+        "env": {
+          "LLVM_PROFILE_FILE": "./out/purs.profraw"
         }
-    ]
+      },
+      "dependsOn": "build debug bin",
+      "problemMatcher": []
+    },
+    {
+      "label": "coverage step 1",
+      "type": "shell",
+      "command": "D:/.rustup/toolchains/nightly-x86_64-pc-windows-msvc/lib/rustlib/x86_64-pc-windows-msvc/bin/llvm-profdata merge -sparse ./out/purs.profraw -o ./out/purs.profdata",
+      "dependsOn": "run debug bin"
+    },
+    {
+      "label": "coverage step 2",
+      "type": "shell",
+      "command": "D:/.rustup/toolchains/nightly-x86_64-pc-windows-msvc/lib/rustlib/x86_64-pc-windows-msvc/bin/llvm-cov show -format=text -output-dir=./out/cov -Xdemangler=rustfilt ./out/purs -instr-profile=./out/purs.profdata -show-line-counts-or-regions -show-instantiations",
+      "dependsOn": "coverage step 1"
+    },
+    {
+      "label": "coverage",
+      "dependsOn": "coverage step 2"
+    }
+  ]
 }

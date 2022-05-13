@@ -1,38 +1,39 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [{
-            "type": "lldb",
-            "request": "launch",
-            "name": "Build and Debug",
-            "program": "${workspaceFolder}/out/purs",
-            "args": [],
-            "env": {
-                "LLVM_PROFILE_FILE": "${workspaceFolder}/out/purs.profraw"
-            },
-            "cwd": "${workspaceFolder}",
-            "sourceLanguages": ["rust"],
-            "sourceMap": {
-                "/rustc/cb121987158d69bb894ba1bcc21dc45d1e0a488f": "D:/.rustup/toolchains/nightly-x86_64-pc-windows-msvc/lib/rustlib/src/rust"
-            },
-            "preLaunchTask": "build debug bin"
-        },
-        {
-            "type": "lldb",
-            "request": "launch",
-            "name": "Debug",
-            "program": "${workspaceFolder}/out/purs",
-            "args": [],
-            "env": {
-                "LLVM_PROFILE_FILE": "${workspaceFolder}/out/purs.profraw"
-            },
-            "cwd": "${workspaceFolder}",
-            "sourceLanguages": ["rust"],
-            "sourceMap": {
-                "/rustc/cb121987158d69bb894ba1bcc21dc45d1e0a488f": "D:/.rustup/toolchains/nightly-x86_64-pc-windows-msvc/lib/rustlib/src/rust"
-            }
-        }
-    ]
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Build and Debug",
+      "program": "${workspaceFolder}/out/purs",
+      "args": [],
+      "env": {
+        "LLVM_PROFILE_FILE": "${workspaceFolder}/out/purs.profraw"
+      },
+      "cwd": "${workspaceFolder}",
+      "sourceLanguages": ["rust"],
+      "sourceMap": {
+        "/rustc/cb121987158d69bb894ba1bcc21dc45d1e0a488f": "D:/.rustup/toolchains/nightly-x86_64-pc-windows-msvc/lib/rustlib/src/rust"
+      },
+      "preLaunchTask": "build debug bin"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug",
+      "program": "${workspaceFolder}/out/purs",
+      "args": [],
+      "env": {
+        "LLVM_PROFILE_FILE": "${workspaceFolder}/out/purs.profraw"
+      },
+      "cwd": "${workspaceFolder}",
+      "sourceLanguages": ["rust"],
+      "sourceMap": {
+        "/rustc/cb121987158d69bb894ba1bcc21dc45d1e0a488f": "D:/.rustup/toolchains/nightly-x86_64-pc-windows-msvc/lib/rustlib/src/rust"
+      }
+    }
+  ]
 }
