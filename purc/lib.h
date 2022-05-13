@@ -12,13 +12,13 @@
 #endif // _WIN32
 
 #ifdef __cplusplus
-extern "C"
-{
+extern "C" {
 #endif // __cplusplus
 
 #include <stdint.h>
 
-  uint32_t PURC_API purc_max(uint32_t x, uint32_t y);
+uint32_t PURC_API purc_max(uint32_t x, uint32_t y);
+void PURC_API     purc_call_rs(void (*cb)());
 
 #ifdef __cplusplus
 }

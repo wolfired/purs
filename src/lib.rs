@@ -3,5 +3,6 @@
 
 mod purc;
 pub use purc::purc_max;
+pub use purc::purc_call_rs;
 
 pub mod pseudorandom;
