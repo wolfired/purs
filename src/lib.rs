@@ -2,7 +2,9 @@
 #![crate_type = "lib"]
 
 mod purc;
-pub use purc::purc_max;
-pub use purc::purc_call_rs;
+pub use purc::{purc_call_rs, purc_max};
 
 pub mod pseudorandom;
+
+mod syscall;
+pub use syscall::{syscall_fstat, syscall_mmap, syscall_open, syscall_read, syscall_write};
