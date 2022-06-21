@@ -12,7 +12,7 @@ a pure rustc project template for vscode
 ```bash
 
 code --install-extension vadimcn.vscode-lldb && \
-code --install-extension matklad.rust-analyzer && \
+code --install-extension rust-lang.rust-analyzer && \
 rustup toolchain install nightly && \
 rustup default nightly && \
 rustup component add llvm-tools-preview rust-src && \

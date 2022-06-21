@@ -1,8 +1,7 @@
 #![crate_name = "purs"]
 #![crate_type = "bin"]
-#![feature(asm_const)]
 
-use std::{slice::from_raw_parts, thread, time::Duration, vec};
+use std::{slice::from_raw_parts, thread, time::Duration, vec, ffi::{CStr, CString}};
 
 use purs::{syscall_open, syscall_fstat, syscall_read, syscall_write, syscall_mmap};
 
@@ -12,7 +11,7 @@ use purs::{syscall_open, syscall_fstat, syscall_read, syscall_write, syscall_mma
 //             syscall
 
 fn main() {
-    let fd = syscall_open("/etc/hosts\0");
+    let fd = syscall_open(CString::new("/etc/hosts").unwrap().to_str().unwrap());
 
     let buf = &mut [0; 144][..];
     let ret = syscall_fstat(fd, buf);
@@ -28,5 +27,5 @@ fn main() {
 
     println!("{}", size);
 
-    thread::sleep(Duration::from_secs(8));
+    // thread::sleep(Duration::from_secs(8));
 }
