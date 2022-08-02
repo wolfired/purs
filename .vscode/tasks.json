@@ -51,6 +51,12 @@
     {
       "label": "coverage",
       "dependsOn": "coverage step 2"
+    },
+    {
+      "label": "codecov step 2",
+      "type": "shell",
+      "command": "D:/.rustup/toolchains/nightly-x86_64-pc-windows-msvc/lib/rustlib/x86_64-pc-windows-msvc/bin/llvm-cov export -format=lcov ./out/purs -instr-profile=./out/purs.profdata > ./out/cov/codecov.info",
+      "dependsOn": "coverage step 1"
     }
   ]
 }
