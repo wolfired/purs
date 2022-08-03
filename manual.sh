@@ -24,6 +24,11 @@ function act_run() {
 }
 
 function act_upload_codecov() {
+    if (( 0 == `git status | grep -coP 'nothing to commit, working tree clean'` )); then
+        echo 'you need commit and push at first'
+        return
+    fi
+
     if [[ ! -x `type codecov | grep -oP '[^\s]+$'` ]]; then
         echo 'you need get codecov'
         return 0
