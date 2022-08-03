@@ -23,8 +23,13 @@ function act_run() {
     $sysroot/lib/rustlib/$target_triple/bin/llvm-cov export -format=lcov $target/$name -instr-profile=$profdata_file > $target/cov/codecov.info
 }
 
+
 function act_upload_codecov() {
-    if (( 0 == `git status | grep -coP 'nothing to commit, working tree clean'` )); then
+    local count=`git status --porcelain | grep -coP '^.+$'`
+	local hashl=`git rev-parse @`
+	local hashr=`git rev-parse @{u}`
+
+    if (( 0 < $count )) || [[ $hashl != $hashr ]]; then
         echo 'you need commit and push at first'
         return
     fi
