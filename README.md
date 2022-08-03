@@ -24,25 +24,25 @@ cargo install rustfilt && \
 ```batch
 
 # build dll
-cl /Fo:.\out\libpurc.obj /LD /DBUILD_DLL .\purc\lib.c /link /OUT:.\out\purc.dll /IMPLIB:.\out\purc.lib
+cl /Fo:.\target\libpurc.obj /LD /DBUILD_DLL .\purc\lib.c /link /OUT:.\target\purc.dll /IMPLIB:.\target\purc.lib
 
 # build lib
-cl /Fo:.\out\libpurc.obj /DBUILD_DLL /c .\purc\lib.c
-lib /OUT:.\out\purc.lib .\out\libpurc.obj
+cl /Fo:.\target\libpurc.obj /DBUILD_DLL /c .\purc\lib.c
+lib /OUT:.\target\purc.lib .\target\libpurc.obj
 
 # build bin
-cl /Fo:.\out\purc.obj /DBUILD_DLL .\purc\main.c .\out\purc.lib /link /NOIMPLIB /OUT:.\out\purc
+cl /Fo:.\target\purc.obj /DBUILD_DLL .\purc\main.c .\target\purc.lib /link /NOIMPLIB /OUT:.\target\purc
 
 # build so
-gcc -fPIC -shared -o ./out/libpurc.so ./purc/lib.c
-export LD_LIBRARY_PATH=./out
+gcc -fPIC -shared -o ./target/libpurc.so ./purc/lib.c
+export LD_LIBRARY_PATH=./target
 
 # build a
-gcc -c -o ./out/libpurc.o ./purc/lib.c
-ar rcs ./out/libpurc.a ./out/libpurc.o
+gcc -c -o ./target/libpurc.o ./purc/lib.c
+ar rcs ./target/libpurc.a ./target/libpurc.o
 
 #build bin
-gcc -o ./out/purc -L./out ./purc/main.c -lpurc
+gcc -o ./target/purc -L./target ./purc/main.c -lpurc
 
 ```
 
