@@ -23,7 +23,6 @@ function act_run() {
     $sysroot/lib/rustlib/$target_triple/bin/llvm-cov export -format=lcov $target/$name -instr-profile=$profdata_file > $target/cov/codecov.info
 }
 
-
 function act_upload_codecov() {
     local count=`git status --porcelain | grep -coP '^.+$'`
 	local hashl=`git rev-parse @`
