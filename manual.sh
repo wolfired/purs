@@ -30,17 +30,17 @@ function act_upload_codecov() {
 
     if (( 0 < $count )) || [[ $hashl != $hashr ]]; then
         echo 'you need commit and push at first'
-        return
+        return 1
     fi
 
     if [[ ! -x `type codecov | grep -oP '[^\s]+$'` ]]; then
         echo 'you need get codecov'
-        return 0
+        return 1
     fi
 
     if [[ ! -n $CODECOV_TOKEN ]]; then
         echo 'you need setup CODECOV_TOKEN env var'
-        return 0
+        return 1
     fi
 
     codecov -t $CODECOV_TOKEN
