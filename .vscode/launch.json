@@ -16,7 +16,7 @@
       "cwd": "${workspaceFolder}",
       "sourceLanguages": ["rust"],
       "sourceMap": {
-        "/rustc/fe3342816a282949f014caa05ea2e669ff9d3d3c": "D:/.rustup/toolchains/nightly-x86_64-pc-windows-msvc/lib/rustlib/src/rust"
+        "/rustc/f6f9d5e73d5524b6281c10a5c89b7db35c330634": "D:/.rustup/toolchains/nightly-x86_64-pc-windows-msvc/lib/rustlib/src/rust"
       },
       "preLaunchTask": "build debug bin"
     },
@@ -32,7 +32,7 @@
       "cwd": "${workspaceFolder}",
       "sourceLanguages": ["rust"],
       "sourceMap": {
-        "/rustc/fe3342816a282949f014caa05ea2e669ff9d3d3c": "D:/.rustup/toolchains/nightly-x86_64-pc-windows-msvc/lib/rustlib/src/rust"
+        "/rustc/f6f9d5e73d5524b6281c10a5c89b7db35c330634": "D:/.rustup/toolchains/nightly-x86_64-pc-windows-msvc/lib/rustlib/src/rust"
       }
     }
   ]
