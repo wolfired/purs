@@ -39,13 +39,13 @@
     {
       "label": "coverage step 1",
       "type": "shell",
-      "command": "D:/.rustup/toolchains/nightly-x86_64-pc-windows-msvc/lib/rustlib/x86_64-pc-windows-msvc/bin/llvm-profdata merge -sparse ./target/purs.profraw -o ./target/purs.profdata",
+      "command": "/home/link/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/bin/llvm-profdata merge -sparse ./target/purs.profraw -o ./target/purs.profdata",
       "dependsOn": "run debug bin"
     },
     {
       "label": "coverage step 2",
       "type": "shell",
-      "command": "D:/.rustup/toolchains/nightly-x86_64-pc-windows-msvc/lib/rustlib/x86_64-pc-windows-msvc/bin/llvm-cov show -format=text -output-dir=./target/cov -Xdemangler=rustfilt ./target/purs -instr-profile=./target/purs.profdata -show-line-counts-or-regions -show-instantiations",
+      "command": "/home/link/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/bin/llvm-cov show -format=text -output-dir=./target/cov -Xdemangler=rustfilt ./target/purs -instr-profile=./target/purs.profdata -show-line-counts-or-regions -show-instantiations",
       "dependsOn": "coverage step 1"
     },
     {
@@ -55,7 +55,7 @@
     {
       "label": "codecov step 2",
       "type": "shell",
-      "command": "D:/.rustup/toolchains/nightly-x86_64-pc-windows-msvc/lib/rustlib/x86_64-pc-windows-msvc/bin/llvm-cov export -format=lcov ./target/purs -instr-profile=./target/purs.profdata > ./target/cov/codecov.info",
+      "command": "/home/link/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/bin/llvm-cov export -format=lcov ./target/purs -instr-profile=./target/purs.profdata > ./target/cov/codecov.info",
       "dependsOn": "coverage step 1"
     }
   ]
