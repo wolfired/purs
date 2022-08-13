@@ -9,6 +9,5 @@ pub mod pseudorandom;
 mod syscall;
 pub use syscall::{syscall_fstat, syscall_mmap, syscall_open, syscall_read, syscall_write};
 
-pub fn trace(msg: &str) {
-    println!("{}", msg);
-}
+pub mod hexagons;
+pub mod instant_buffer;
