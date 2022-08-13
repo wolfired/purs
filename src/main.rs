@@ -111,6 +111,5 @@ fn main() {
         }
     }
 
-    println!("{:?}", rb);
     println!("{}", rb);
 }
