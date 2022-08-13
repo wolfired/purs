@@ -1,8 +1,6 @@
 #![crate_name = "purs"]
 #![crate_type = "bin"]
 
-use std::time::Instant;
-
 use purs::instant_buffer::{ICodec, InstantBuffer};
 
 #[derive(Debug, Default)]
@@ -60,9 +58,6 @@ impl<const N: usize> ICodec<N> for Mail {
 }
 
 fn main() {
-    let id1 = Id { id: 1 };
-    let id2 = Id { id: 2 };
-
     let u0 = User {
         name: "link".to_owned(),
         age: 35,
