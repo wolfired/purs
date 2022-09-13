@@ -16,7 +16,7 @@
       "cwd": "${workspaceFolder}",
       "sourceLanguages": ["rust"],
       "sourceMap": {
-        "/rustc/d394408fb38c4de61f765a3ed5189d2731a1da91": "/home/link/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust"
+        "/rustc/fa6ee9375242ae784dab1837dfc0b92f43e787ce": "/home/link/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust"
       },
       "preLaunchTask": "build debug bin"
     },
@@ -32,7 +32,7 @@
       "cwd": "${workspaceFolder}",
       "sourceLanguages": ["rust"],
       "sourceMap": {
-        "/rustc/d394408fb38c4de61f765a3ed5189d2731a1da91": "/home/link/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust"
+        "/rustc/fa6ee9375242ae784dab1837dfc0b92f43e787ce": "/home/link/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust"
       }
     }
   ]

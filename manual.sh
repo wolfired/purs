@@ -15,7 +15,17 @@ profdata_file=$target/$name.profdata
 function act_run() {
     rustc -g --out-dir $target --edition 2021 -C instrument-coverage -L $target -l purc $src/lib.rs
 
+    if (( 0 != $? )); then
+        echo 'build lib error'
+        exit 0
+    fi
+
     rustc -g -o $target/$name --edition 2021 -C instrument-coverage -L $target --extern purs $src/main.rs
+
+    if (( 0 != $? )); then
+        echo 'build bin error'
+        exit 0
+    fi
 
     LLVM_PROFILE_FILE=$profraw_file $target/$name
     $sysroot/lib/rustlib/$target_triple/bin/llvm-profdata merge -sparse $profraw_file -o $profdata_file
