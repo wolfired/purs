@@ -11,3 +11,5 @@ pub use syscall::{syscall_fstat, syscall_mmap, syscall_open, syscall_read, sysca
 
 pub mod hexagons;
 pub mod instant_buffer;
+
+pub mod netpbm;
