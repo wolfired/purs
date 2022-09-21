@@ -56,15 +56,21 @@ function act_upload_codecov() {
     codecov -t $CODECOV_TOKEN
 }
 
+function act_doc() {
+    rustdoc --html-in-header ./html/katex_header.html ./src/lib.rs
+}
+
 function main() {
     local actions=(
         act_run
         act_upload_codecov
+        act_doc
         'exit 0'
     )
     local labels=(
         'run'
         'codecov'
+        'doc'
         'quit'
     )
 

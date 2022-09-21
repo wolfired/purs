@@ -1,11 +1,11 @@
 #![crate_name = "purs"]
 #![crate_type = "bin"]
 
-use std::fs::{read, OpenOptions};
-use std::io::Write;
+// use std::fs::{read, OpenOptions};
+// use std::io::Write;
 
-use purs::netpbm::PNM;
-use purs::fixed_point::FixedPoint;
+use purs::fixed_point::{FixedPoint};
+// use purs::netpbm::PNM;
 
 fn main() {
     // let mut file = OpenOptions::new()
@@ -20,10 +20,11 @@ fn main() {
 
     // let pnm = PNM::from(read("./2x2.pbm").unwrap());
     // println!("{:?}", pnm);
-    let mut fp0 = FixedPoint::<isize, 8>::from(25.5);
-    let fp1 = FixedPoint::<isize, 8>::from(6.2);
-    println!("{}", f64::from(fp0));
-    println!("{}", f64::from(fp1));
-    fp0 -= fp1;
-    println!("{}", f64::from(fp0));
+    let mut fp0 = FixedPoint::<i64, 23>::from(f32::EPSILON);
+    let mut fp1 = FixedPoint::<i64, 23>::from(-1.0);
+    // unsafe {
+    //     *(&mut fp0.value as *const i64 as *mut u64) = 0b0_0000000_00000000_00000000_00000000_00000000_0_1111111_11111111_11111111;
+    // }
+    println!("{}", f32::from(fp0 + fp1));
+    println!("{}", -1.0 + f32::EPSILON);
 }
