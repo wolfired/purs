@@ -15,3 +15,5 @@ pub mod instant_buffer;
 pub mod netpbm;
 
 pub mod fixed_point;
+
+pub mod cg;
