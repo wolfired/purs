@@ -30,26 +30,18 @@ impl From<Vec<u8>> for PNM {
         (offset, magic_number) = u16::dump_from_be_bytes(raw.as_slice(), 0);
         (offset, width) = i32::dump_from_str(raw.as_slice(), offset);
         (offset, height) = i32::dump_from_str(raw.as_slice(), offset);
-        (offset, colors) = dump_raster(
+        (_, colors) = dump_raster(
             magic_number,
             (width * height) as usize,
             raw.as_slice(),
             offset,
         );
-        println!("offset {}", offset);
         Self {
             magic_number,
             width,
             height,
             colors,
         }
-    }
-}
-
-impl From<PNM> for Vec<u8> {
-    fn from(pnm: PNM) -> Self {
-        let raw = Vec::<u8>::with_capacity(3);
-        raw
     }
 }
 
@@ -165,17 +157,15 @@ macro_rules! impl_dump_integer {
 impl_dump_integer!(u8, u16, u32, u64, u128, usize, i8, i16, i32, i64, i128, isize);
 
 fn dump_raster(
-    magic_number: u16,
+    _magic_number: u16,
     size: usize,
     raw: &[u8],
     mut offset: usize,
 ) -> (usize, Vec<Color>) {
-    let mut raster = Vec::with_capacity(size);
+    let raster = Vec::with_capacity(size);
 
-    for i in 0..size {
-        let v;
-        (offset, v) = u8::dump_from_str(raw, offset);
-        // println!("{:02}, {:02x}", i, v);
+    for _ in 0..size {
+        (offset, _) = u8::dump_from_str(raw, offset);
     }
 
     (offset, raster)
