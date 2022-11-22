@@ -17,3 +17,13 @@ pub mod netpbm;
 pub mod fixed_point;
 
 pub mod cg;
+
+pub mod tga;
+
+pub mod obj;
+
+pub mod la;
+
+pub mod number;
+
+pub mod byteshaping;
