@@ -1,4 +1,5 @@
 use std::{array::from_mut, cell::RefCell, fmt::Display, ops::AddAssign, slice::from_raw_parts};
+use std::convert::TryInto;
 
 pub trait ICodec<const N: usize> {
     fn encode(&self, rb: &InstantBuffer<N>);

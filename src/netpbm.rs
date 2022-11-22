@@ -1,3 +1,5 @@
+use std::convert::TryInto;
+
 pub mod pbm;
 
 #[derive(Copy, Clone, Debug)]

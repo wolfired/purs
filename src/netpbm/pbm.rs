@@ -1,3 +1,5 @@
+use std::convert::TryInto;
+
 use super::{is_comment, is_newline, is_space, Color};
 
 #[derive(Debug)]

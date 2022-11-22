@@ -10,6 +10,7 @@
 //! 
 
 use std::convert::TryFrom;
+use std::convert::TryInto;
 use std::{
     error::Error,
     fmt::{Debug, Display},

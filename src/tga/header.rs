@@ -1,6 +1,7 @@
 use std::error::Error;
 use std::fmt::Display;
 use std::io::Write;
+use std::convert::TryInto;
 
 use super::TGAError;
 
