@@ -3,6 +3,10 @@ use std::{slice::from_raw_parts, vec, ffi::{CString}};
 use purs::{syscall_open, syscall_fstat, syscall_read, syscall_write, syscall_mmap};
 
 fn main() {
+    if cfg!(windows) {
+        return;
+    }
+
     let fd = syscall_open(CString::new("/etc/hosts").unwrap().to_str().unwrap());
 
     let buf = &mut [0; 144][..];
