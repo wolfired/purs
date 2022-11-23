@@ -15,8 +15,6 @@
 //! $$ (a \verb|>>| b) \cdot 2^n = \frac a {2^b} \cdot 2^n = \frac {a \cdot 2^n} {2^{\frac {b \cdot 2^n} {2^n}}} = \frac A {2^{\frac B {2^n}}} = A \verb|>>| (B \verb|>>| n) $$
 //!
 
-pub mod fp;
-
 use crate::number::Integer;
 use crate::number::Number;
 use crate::number::One;

@@ -8,11 +8,8 @@ use std::error::Error;
 use purs::cg::line::line_bresenham;
 use purs::obj::Obj;
 use purs::tga::image::TGAImage;
-use purs::fixed_point::fp::test;
 
 fn main() -> Result<(), Box<dyn Error>> {
-    test()?;
-
     // let a = Into::<FixedPoint<i64, 10>>::into(25.0);
     // let b = Into::<FixedPoint<i64, 10>>::into(15.0);
 
