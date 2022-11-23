@@ -1,3 +1,10 @@
 {
-  "rust-analyzer.linkedProjects": ["./.vscode/rust-project.json"]
+  "rust-analyzer.linkedProjects": [
+    "./.vscode/rust-project.json"
+  ],
+  "files.associations": {
+    "*.inc": "cpp",
+    "stdio.h": "c",
+    "stddef.h": "c"
+  }
 }

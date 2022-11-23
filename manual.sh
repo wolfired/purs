@@ -9,20 +9,48 @@ dir_src=$root_path/src
 dir_out=$root_path/target
 
 function color_msg() {
-    local msg=${1:-''}
-    local switch=${2:?'need switch'}
+    local color=${1:?'(r)ed or (g)reen (b)lue (y)ellow (p)urple (c)yan'}
 
-    if [[ '' == $msg ]]; then
+    if (( 2 > $# )); then
         return
     fi
 
-    if [[ '1' == $switch || 'Yes' == $switch ]]; then
-        # green
-        echo -e '\033[32m'$msg'\033[0m'
+    if [[ 'r' == $color ]]; then
+        echo -e '\033[31m'${@:2}'\033[0m' # red
+    elif [[ 'g' == $color ]]; then
+        echo -e '\033[32m'${@:2}'\033[0m' # green
+    elif [[ 'b' == $color ]]; then
+        echo -e '\033[34m'${@:2}'\033[0m' # blue
+    elif [[ 'y' == $color ]]; then
+        echo -e '\033[33m'${@:2}'\033[0m' # yellow
+    elif [[ 'p' == $color ]]; then
+        echo -e '\033[35m'${@:2}'\033[0m' # purple
+    elif [[ 'c' == $color ]]; then
+        echo -e '\033[36m'${@:2}'\033[0m' # cyan
     else
-        # red
-        echo -e '\033[31m'$msg'\033[0m'
+        echo -e '\033[37m'${@:2}'\033[0m' # white
     fi
+}
+
+function exec_rustc() {
+    local input_args=${1:?''}
+    local rustc_args=(${@:2})
+
+    if (( 1 == $input_args )); then
+        color_msg y "preparing: rustc ${rustc_args[*]}"
+
+        read -p "input rustc ext args: " ext_rustc_args
+
+        for ext_arg in ${ext_rustc_args[@]}; do
+            rustc_args+=($ext_arg)
+        done
+    fi
+
+    color_msg g "executing: rustc ${rustc_args[*]}"
+
+    rustc ${rustc_args[@]}
+
+    return $?
 }
 
 function get_id_name() {
@@ -59,11 +87,11 @@ function get_group_name() {
 }
 
 function build_bin() {
-    local in_file=${1:?''}
-    local out_file=${2:?''}
+    local file_in=${1:?''}
+    local file_out=${2:?''}
     local dir_lib=${3:?''}
 
-    rustc -g -o $out_file --edition 2021 -C instrument-coverage -L $dir_lib --extern purs $in_file
+    exec_rustc 0 -g -o $file_out --edition 2021 -C instrument-coverage -L $dir_lib --extern purs $file_in
 
     if (( 0 != $? )); then
         echo 'build bin error'
@@ -72,10 +100,10 @@ function build_bin() {
 }
 
 function build_lib() {
-    local source_file=${1:?''}
+    local file_in=${1:?''}
     local dir_out=${2:?''}
 
-    rustc -g --out-dir $dir_out --edition 2021 -C instrument-coverage -L $dir_out -l purc $source_file
+    exec_rustc 0 -g --out-dir $dir_out --edition 2021 -C instrument-coverage -L $dir_out -l purc $file_in
 
     if (( 0 != $? )); then
         echo 'build lib error'
@@ -158,7 +186,7 @@ function select_target_group() {
 function run_single() {
     local target_file=${1:?''}
 
-    color_msg "running $target_file" 1
+    color_msg g "running $target_file"
 
     local id_name=`get_id_name $target_file`
     local group_name=`get_group_name $target_file`
@@ -168,9 +196,9 @@ function run_single() {
     local bin_file=$dir_out/$id_name
     local profraw_file=$dir_out/$id_name.profraw
     if [[ -n $group_name ]]; then
-        mkdir -p $dir_out/$group_name
-        bin_file=$dir_out/$group_name/$id_name
-        profraw_file=$dir_out/$group_name/$id_name.profraw
+        mkdir -p $dir_out${group_name:+/$group_name}
+        bin_file=$dir_out${group_name:+/$group_name}/$id_name
+        profraw_file=$dir_out${group_name:+/$group_name}/$id_name.profraw
     fi
 
     build_bin $target_file $bin_file $dir_out
